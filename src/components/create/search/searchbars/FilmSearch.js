@@ -22,7 +22,7 @@ export default class FilmSearch extends React.Component {
   handleSearch = () => {
     const searchString = this.state.searchString;
     if (searchString === "") {
-      return null
+      return null;
     } else {
       this.filmApiCall(searchString);
     }
@@ -71,27 +71,29 @@ export default class FilmSearch extends React.Component {
                 <div className="grid grid-cols-6 gap-2">
                   <div className="col-span-2">
                     {film.poster_path === null || film.poster_path === undefined ? (
-                      <img src="https://via.placeholder.com/300x460?text=X" alt="film-thumbnail" />
+                      <img className="border border-indigo-900 rounded" src="https://via.placeholder.com/300x460?text=X" alt="film-thumbnail" />
                     ) : (
-                      <img src={`https://image.tmdb.org/t/p/w300${film.poster_path}`} alt="film-thumbnail" />
+                      <img className="border border-indigo-900 rounded" src={`https://image.tmdb.org/t/p/w300${film.poster_path}`} alt="film-thumbnail" />
                     )}
                   </div>
                   <div className="col-span-4">
                     {film.original_title === undefined ? (
-                      <h2>{film.name} <span className="font-light"><small>({film.first_air_date.substring(0,4)})</small></span></h2>
+                      <h2>{film.name}</h2>
                     ) : (
-                      <h2>{film.original_title} <span className="font-light"><small>({film.release_date.substring(0,4)})</small></span></h2>
+                      <h2>{film.original_title}</h2>
                     )}
+                    {/*<span className="font-light"><small>({film.release_date.substring(0,4)})</small></span>*/}
+                    {/*<span className="font-light"><small>({film.first_air_date.substring(0,4)})</small></span>*/}
                     <hr className="border-solid border-3 border-indigo-300 my-1" />
                     {film.overview === "" ? (
                       <p>No synopsis available</p>
                     ) : (
-                      <p>{film.overview}</p>
+                      <p>{film.overview.substring(0,400)}</p>
                     )}
 
                   {/* vvvvv SOMEHOW THIS BUTTON MUST SELECT THE SPECIFIC MOVIE AND ADD IT TO A FORM WHICH WILL SAVE TO THE DATABASE vvvvv */}
 
-                    <button className="bg-indigo-500 text-white hover:bg-indigo-600 active:bg-indigo-300 focus:ring-1 focus:ring-indigo-900 focus:outline-none p-2 border border-indigo-600 rounded mt-2">
+                    <button className="bg-indigo-500 text-white hover:bg-indigo-600 active:bg-indigo-300 focus:ring-1 focus:ring-indigo-900 focus:outline-none p-2 border border-indigo-600 rounded mt-5">
                       {film.media_type === "movie" ? (
                         <span>Select Movie </span>
                       ) : (

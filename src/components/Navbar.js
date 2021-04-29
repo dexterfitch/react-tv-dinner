@@ -15,32 +15,32 @@ class Navbar extends React.Component {
       return loggedIn ? (
         <>
           <NavLink 
-            className='p-4 block sm:inline-block' 
-            activeClassName='text-blue-900' 
+            className='py-4 block sm:inline-block' 
+            activeClassName='text-pink-600' 
             exact 
             to='/create'
           >
-            Create
+            <span className="bg-white hover:bg-indigo-600 hover:text-white border-2 border-indigo-600 py-2 px-3 ml-2 rounded-full">Create</span>
           </NavLink>
           <Logout />
         </>
       ) : (
         <>
           <NavLink 
-            className='p-4 inline-block' 
-            activeClassName='text-blue-900' 
+            className='py-4 block sm:inline-block' 
+            activeClassName='text-pink-600' 
             exact 
             to='/signup' 
           >
-            Sign Up
+            <span className="bg-white hover:bg-indigo-600 hover:text-white border-2 border-indigo-600 py-2 px-3 ml-2 rounded-full">Sign Up</span>
           </NavLink>
           <NavLink 
-            className='p-4 inline-block' 
-            activeClassName='text-blue-900' 
+            className='py-4 block sm:inline-block' 
+            activeClassName='text-pink-600' 
             exact 
             to='/login'
           >
-            Log In
+            <span className="bg-white hover:bg-indigo-600 hover:text-white border-2 border-indigo-600 py-2 px-3 ml-2 rounded-full">Log In</span>
           </NavLink>
         </>
       );
@@ -51,16 +51,16 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <nav className='bg-blue-50 text-blue-500'>
-        <div className='w-11/12 max-w-6xl mx-auto grid sm:grid-cols-3 md:grid-cols-4'>
-          <div className='sm:col-span-2 md:col-span-3'>
+      <nav className='text-indigo-600 mb-10'>
+        <div className='container mx-auto grid sm:grid-cols-2'>
+          <div className='sm:col-span-1'>
             <NavLink 
-              className='p-4 block sm:inline-block' 
-              activeClassName='text-blue-900' 
+              className='py-4 block sm:inline-block' 
+              activeClassName='text-pink-600' 
               exact
               to='/'
             >
-              Home
+              <span className="bg-white hover:bg-indigo-600 hover:text-white border-2 border-indigo-600 py-2 px-3 mr-2 rounded-full">Home</span>
             </NavLink>
           </div>
           <div className='sm:text-right'>

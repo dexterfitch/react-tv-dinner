@@ -11,9 +11,9 @@ const Logout = ({ dispatchLogoutUser }) => {
   };
 
   return (
-    <button className='p-4' onClick={handleClick}>
-      Logout
-    </button>
+    <div className='py-4 block sm:inline-block' onClick={handleClick}>
+      <span className="cursor-pointer bg-white hover:bg-indigo-600 hover:text-white border-2 border-indigo-600 py-2 px-3 ml-2 rounded-full">Log Out</span>
+    </div>
   );
 };
 
