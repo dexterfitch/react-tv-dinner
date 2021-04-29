@@ -10,11 +10,18 @@ class Navbar extends React.Component {
   }
 
   renderAuthLinks() {
-    const { authChecked, loggedIn, currentUser } = this.props;
+    const { authChecked, loggedIn } = this.props;
     if (authChecked) {
       return loggedIn ? (
         <>
-          { currentUser.email }
+          <NavLink 
+            className='p-4 block sm:inline-block' 
+            activeClassName='text-blue-900' 
+            exact 
+            to='/create'
+          >
+            Create
+          </NavLink>
           <Logout />
         </>
       ) : (
@@ -53,15 +60,7 @@ class Navbar extends React.Component {
               exact
               to='/'
             >
-              NormalRoute
-            </NavLink>
-            <NavLink 
-              className='p-4 block sm:inline-block' 
-              activeClassName='text-blue-900' 
-              exact 
-              to='/protected_route'
-            >
-              ProtectedRoute
+              Home
             </NavLink>
           </div>
           <div className='sm:text-right'>
