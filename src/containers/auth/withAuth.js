@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { checkAuth } from '../../actions/auth';
-import LoadingSpinner from '../LoadingSpinner';
+import { checkAuth } from '../../actions/actionCreators/auth';
+import LoadingSpinner from '../../components/LoadingSpinner';
 import Login from './Login';
 
 function withAuth(WrappedComponent) {

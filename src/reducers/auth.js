@@ -6,7 +6,7 @@ const initialState = {
   currentUser: {}
 };
 
-export default function authReducer(state = initialState, action) {
+export default function auth(state = initialState, action) {
   switch (action.type) {
     case AUTHENTICATED:
       return {

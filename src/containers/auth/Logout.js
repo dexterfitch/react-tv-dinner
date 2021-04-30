@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logoutUser } from '../../actions/auth';
+import { logoutUser } from '../../actions/actionCreators/auth';
 import { useHistory } from 'react-router-dom';
 
 const Logout = ({ dispatchLogoutUser }) => {

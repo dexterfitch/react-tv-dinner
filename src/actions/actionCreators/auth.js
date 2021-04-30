@@ -1,4 +1,4 @@
-import { AUTHENTICATED, NOT_AUTHENTICATED } from '.';
+import { AUTHENTICATED, NOT_AUTHENTICATED } from '..';
 
 const setToken = (token) => {
   localStorage.setItem("token", token);

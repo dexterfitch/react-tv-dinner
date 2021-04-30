@@ -1,6 +1,12 @@
 import { combineReducers } from 'redux'
-import authReducer from './auth'
+import auth from './auth'
+import film from '.'
+import recipe from '.'
+import tvdinner from '.'
 
 export default combineReducers ({
-  auth: authReducer
+  auth,
+  film,
+  recipe,
+  tvdinner
 })

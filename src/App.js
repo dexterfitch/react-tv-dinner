@@ -2,9 +2,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Create from './components/create';
-import Signup from './components/auth/Signup';
-import Login from './components/auth/Login';
-import withAuth from './components/auth/withAuth';
+import Signup from './containers/auth/Signup';
+import Login from './containers/auth/Login';
+import withAuth from './containers/auth/withAuth';
 
 function App() {
   return ( 
