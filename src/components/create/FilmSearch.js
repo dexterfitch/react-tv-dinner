@@ -1,10 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { searchFilmApi } from '../../actions/actionCreators/film.js'
 import { ArrowRightIcon } from '@heroicons/react/solid';
 
-export default class FilmSearch extends React.Component {
+export class FilmSearch extends React.Component {
   state = {
-    searchString: '',
-    films: []
+    searchString: ''
   };
 
   handleChange = e => {
@@ -24,21 +25,9 @@ export default class FilmSearch extends React.Component {
     if (searchString === "") {
       return null;
     } else {
-      this.filmApiCall(searchString);
+      this.props.searchFilmApi(searchString);
     }
   };
-
-  filmApiCall = searchString => {
-    const filmApi = `https://api.themoviedb.org/3/search/multi?api_key=e1662fac6894a9932ee327479a6591b1&query=${searchString}`;
-    fetch(filmApi)
-      .then(res => {
-        return res.json();
-      })
-      .then(json => {
-        const filteredFilms = json.results.filter(result => !result.media_type.includes("person"))
-        this.setState({films: filteredFilms})
-      })
-  }
 
   render() {
     return (
@@ -64,9 +53,9 @@ export default class FilmSearch extends React.Component {
             </button>
           </div>
         </div>
-        {this.state.films.length ? (
+        {this.props.searchedFilms.length ? (
           <div className="films-container mt-4 max-h-96">
-            {this.state.films.map((film, index) => (
+            {this.props.searchedFilms.map((film, index) => (
               <div className="film" key={index}>
                 <div className="grid grid-cols-6 gap-2">
                   <div className="col-span-2">
@@ -116,3 +105,7 @@ export default class FilmSearch extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => ({ searchedFilms: state.searchedFilms });
+
+export default connect(mapStateToProps, { searchFilmApi })(FilmSearch);
