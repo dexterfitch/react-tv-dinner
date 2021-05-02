@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { searchRecipeApi } from '../../actions/actionCreators/recipe.js'
+import { searchRecipeApi } from '../../actions/actionCreators/recipe.js';
+import { addRecipe } from '../../actions/actionCreators/tvdinner.js';
 import { ArrowRightIcon } from '@heroicons/react/solid';
 
 export class RecipeSearch extends React.Component {
@@ -18,7 +19,7 @@ export class RecipeSearch extends React.Component {
     if (e.key === 'Enter') {
       this.handleSearch();
     }
-  }
+  };
 
   handleSearch = () => {
     const searchString = this.state.searchString;
@@ -28,6 +29,10 @@ export class RecipeSearch extends React.Component {
       this.props.searchRecipeApi(searchString);
     }
   };
+
+  handleSelection = e => {
+    this.props.addRecipe(e.target.id);
+  }
 
   render() {
     return (
@@ -78,8 +83,11 @@ export class RecipeSearch extends React.Component {
                     </ul>
 
                     {/* vvvvv SOMEHOW THIS BUTTON MUST SELECT ONE OR SEVERAL RECIPES AND ADD THEM TO A FORM WHICH WILL SAVE TO THE DATABASE vvvvv */}
-
-                    <button className="bg-indigo-500 text-white hover:bg-indigo-600 active:bg-indigo-300 focus:ring-1 focus:ring-indigo-900 focus:outline-none p-2 border border-indigo-600 rounded mt-5">
+                    <button 
+                      id={recipe.recipe.uri.split("_")[1]}
+                      onClick={this.handleSelection}
+                      className="bg-indigo-500 text-white hover:bg-indigo-600 active:bg-indigo-300 focus:ring-1 focus:ring-indigo-900 focus:outline-none p-2 border border-indigo-600 rounded mt-5"
+                    >
                       Add Recipe
                     </button>
 
@@ -101,4 +109,4 @@ export class RecipeSearch extends React.Component {
 
 const mapStateToProps = state => ({ searchedRecipes: state.searchedRecipes });
 
-export default connect(mapStateToProps, { searchRecipeApi })(RecipeSearch);
+export default connect(mapStateToProps, { searchRecipeApi, addRecipe })(RecipeSearch);

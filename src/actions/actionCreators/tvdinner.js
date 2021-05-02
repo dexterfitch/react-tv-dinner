@@ -1,4 +1,4 @@
-import { ADD_FILM, ADD_RECIPE, SAVE_TVDINNER } from '..';
+import { ADD_FILM, ADD_RECIPE } from '..';
 
 export function addFilm(filmID) {
   return {
@@ -17,20 +17,20 @@ export function addRecipe(recipeID) {
   }
 }
 
-export function saveTVDinner() {
-  return (dispatch) => {
-    // ROUTE FOR SAVING TO DATABASE HASN'T BEEN BUILT IN BACKEND YET
-    return fetch("http://localhost:3001/save", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ tvdinner: state })
-    }).then((res) => {
-      if (res.ok) {
-        dispatch({ type: SAVE_TVDINNER })
-      }
-    })
-  }
-}
+// export function saveTVDinner() {
+//   return (dispatch) => {
+//     // ROUTE FOR SAVING TO DATABASE HASN'T BEEN BUILT IN BACKEND YET
+//     return fetch("http://localhost:3001/save", {
+//       method: "POST",
+//       headers: {
+//         Accept: "application/json",
+//         "Content-Type": "application/json"
+//       },
+//       body: JSON.stringify({ tvdinner })
+//     }).then((res) => {
+//       if (res.ok) {
+//         dispatch({ type: SAVE_TVDINNER })
+//       }
+//     })
+//   }
+// }
