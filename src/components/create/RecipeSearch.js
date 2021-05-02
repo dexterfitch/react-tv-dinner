@@ -1,10 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { searchRecipeApi } from '../../actions/actionCreators/recipe.js'
 import { ArrowRightIcon } from '@heroicons/react/solid';
 
-export default class RecipeSearch extends React.Component {
+export class RecipeSearch extends React.Component {
   state = {
-    searchString: '',
-    recipes: []
+    searchString: ''
   };
 
   handleChange = e => {
@@ -24,20 +25,9 @@ export default class RecipeSearch extends React.Component {
     if (searchString === "") {
       return null;
     } else {
-      this.recipeApiCall(searchString);
+      this.props.searchRecipeApi(searchString);
     }
   };
-
-  recipeApiCall = searchString => {
-    const recipeApi = `https://api.edamam.com/search?app_id=c3275f9e&app_key=2adeb2b07ad4cdee66f74a93d8f12928&q=${searchString}`;
-    fetch(recipeApi)
-      .then(res => {
-        return res.json();
-      })
-      .then(json => {
-        this.setState({recipes: json.hits})
-      })
-  }
 
   render() {
     return (
@@ -63,9 +53,9 @@ export default class RecipeSearch extends React.Component {
             </button>
           </div>
         </div>
-        {this.state.recipes.length ? (
+        {this.props.searchedRecipes.length ? (
           <div className="recipes-container mt-4 max-h-96">
-            {this.state.recipes.map((recipe, index) => (
+            {this.props.searchedRecipes.map((recipe, index) => (
               <div className="recipe" key={index}>
                 <div className="grid grid-cols-6 gap-2">
                   <div className="col-span-2">
@@ -108,3 +98,7 @@ export default class RecipeSearch extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => ({ searchedRecipes: state.searchedRecipes });
+
+export default connect(mapStateToProps, { searchRecipeApi })(RecipeSearch);

@@ -71,8 +71,6 @@ export class FilmSearch extends React.Component {
                     ) : (
                       <h2>{film.original_title}</h2>
                     )}
-                    {/*<span className="font-light"><small>({film.release_date.substring(0,4)})</small></span>*/}
-                    {/*<span className="font-light"><small>({film.first_air_date.substring(0,4)})</small></span>*/}
                     <hr className="border-solid border-3 border-indigo-300 my-1" />
                     {film.overview === "" ? (
                       <p>No synopsis available</p>
