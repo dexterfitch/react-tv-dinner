@@ -29,8 +29,8 @@ export class FilmSearch extends React.Component {
     }
   };
 
-  handleSelection = e => {
-    console.log(e.target.id);
+  handleSelection = (film_id) => {
+    this.props.handleSetFilm(film_id);
   }
 
   render() {
@@ -83,7 +83,7 @@ export class FilmSearch extends React.Component {
                     )}
                     <button  
                       id={film.id}
-                      onClick={this.handleSelection}
+                      onClick={this.handleSelection(film.id)}
                       className="bg-indigo-500 text-white hover:bg-indigo-600 active:bg-indigo-300 focus:ring-1 focus:ring-indigo-900 focus:outline-none p-2 border border-indigo-600 rounded mt-5"
                     >
                       {film.media_type === "movie" ? (

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 class MyTvdinnerList extends Component {
 
   state = {
@@ -7,7 +6,13 @@ class MyTvdinnerList extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/api/v1/mytvdinners')
+    fetch('http://localhost:3001/api/v1/mytvdinners', {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token")
+      }
+    })
       .then(tvdinners => tvdinners.json())
       .then(json => {
         this.setState({

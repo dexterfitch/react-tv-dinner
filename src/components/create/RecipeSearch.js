@@ -31,8 +31,7 @@ export class RecipeSearch extends React.Component {
   };
 
   handleSelection = e => {
-    console.log(e.target.id);
-    this.props.addRecipe(e.target.id);
+    this.props.handleAddRecipe(e.target.id);
   }
 
   render() {
