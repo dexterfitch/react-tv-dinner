@@ -31,6 +31,7 @@ export class RecipeSearch extends React.Component {
   };
 
   handleSelection = e => {
+    console.log(e.target.id);
     this.props.addRecipe(e.target.id);
   }
 
@@ -81,8 +82,6 @@ export class RecipeSearch extends React.Component {
                         <li key={index}> {ingredient} </li>
                       ))}
                     </ul>
-
-                    {/* vvvvv SOMEHOW THIS BUTTON MUST SELECT ONE OR SEVERAL RECIPES AND ADD THEM TO A FORM WHICH WILL SAVE TO THE DATABASE vvvvv */}
                     <button 
                       id={recipe.recipe.uri.split("_")[1]}
                       onClick={this.handleSelection}
@@ -90,9 +89,6 @@ export class RecipeSearch extends React.Component {
                     >
                       Add Recipe
                     </button>
-
-                    {/* ^^^^^ SOMEHOW THIS BUTTON MUST SELECT ONE OR SEVERAL RECIPES AND ADD THEM TO A FORM WHICH WILL SAVE TO THE DATABASE ^^^^^ */}
-
                   </div>
                 </div>
                 <hr className="border-solid border-4 border-indigo-700 my-4" />

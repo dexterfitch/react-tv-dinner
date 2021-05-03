@@ -29,6 +29,10 @@ export class FilmSearch extends React.Component {
     }
   };
 
+  handleSelection = e => {
+    console.log(e.target.id);
+  }
+
   render() {
     return (
       <>
@@ -77,19 +81,17 @@ export class FilmSearch extends React.Component {
                     ) : (
                       <p>{film.overview.substring(0,400)}</p>
                     )}
-
-                  {/* vvvvv SOMEHOW THIS BUTTON MUST SELECT THE SPECIFIC MOVIE AND ADD IT TO A FORM WHICH WILL SAVE TO THE DATABASE vvvvv */}
-
-                    <button className="bg-indigo-500 text-white hover:bg-indigo-600 active:bg-indigo-300 focus:ring-1 focus:ring-indigo-900 focus:outline-none p-2 border border-indigo-600 rounded mt-5">
+                    <button  
+                      id={film.id}
+                      onClick={this.handleSelection}
+                      className="bg-indigo-500 text-white hover:bg-indigo-600 active:bg-indigo-300 focus:ring-1 focus:ring-indigo-900 focus:outline-none p-2 border border-indigo-600 rounded mt-5"
+                    >
                       {film.media_type === "movie" ? (
                         <span>Select Movie </span>
                       ) : (
                         <span>Select TV Show</span>
                       )}
                     </button>
-
-                  {/* ^^^^^ SOMEHOW THIS BUTTON MUST SELECT THE SPECIFIC MOVIE AND ADD IT TO A FORM WHICH WILL SAVE TO THE DATABASE ^^^^^ */}
-
                   </div>
                 </div>
                 <hr className="border-solid border-4 border-indigo-700 my-4" />
