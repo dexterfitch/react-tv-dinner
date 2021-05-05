@@ -8,3 +8,5 @@ export const ADD_RECIPE = 'Add Recipe';
 export const ADD_FILM = 'Add Film';
 
 export const SAVE_TVDINNER = 'Save TVDinner';
+
+export const GET_MY_TVDINNERS = 'Get My TVDinners';

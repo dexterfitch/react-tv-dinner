@@ -1,28 +1,27 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { getMyTVDinnersApi } from '../actions/actionCreators/tvdinner.js'
+
 class MyTvdinnerList extends Component {
+  constructor(props){
+    super(props)
+    console.log(props,'this is my props')
+  }
 
   state = {
-    tvdinners: []
+    mytvdinners: []
   }
 
-  componentDidMount() {
-    fetch('http://localhost:3001/api/v1/mytvdinners', {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: localStorage.getItem("token")
-      }
-    })
-      .then(tvdinners => tvdinners.json())
-      .then(json => {
-        this.setState({
-          tvdinners: json
-        })
-      })
+
+  componentDidMount(){
+    debugger
+    this.props.dispatchGetMyTVDinnersApi()
   }
+
 
   renderMyTvdinners = () => {
-    return this.state.tvdinners.map(tvdinner => {
+    debugger
+    return this.props.mytvdinners.map(tvdinner => {
       return (
         <div key={tvdinner.id}>
           <p><b>Name:</b> {tvdinner.name}</p>
@@ -45,4 +44,16 @@ class MyTvdinnerList extends Component {
   }
 }
 
-export default MyTvdinnerList
+const mapStateToProps = state => {
+  debugger
+  return { mytvdinners: state.tvdinner.mytvdinners }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  debugger
+  return {
+    dispatchGetMyTVDinnersApi: () => dispatch(getMyTVDinnersApi())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyTvdinnerList);
