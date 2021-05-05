@@ -5,7 +5,7 @@ export default function tvdinner(state = {mytvdinners:[]}, action) {
     case SAVE_TVDINNER:
       return state;
     case GET_MY_TVDINNERS:
-      debugger;
+      // debugger
       return {...state, mytvdinners: action.payload }
     default:
       return state;

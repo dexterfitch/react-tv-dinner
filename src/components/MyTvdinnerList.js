@@ -14,7 +14,7 @@ class MyTvdinnerList extends Component {
 
 
   componentDidMount(){
-    debugger
+    // debugger
     this.props.dispatchGetMyTVDinnersApi()
   }
 
@@ -45,12 +45,12 @@ class MyTvdinnerList extends Component {
 }
 
 const mapStateToProps = state => {
-  debugger
+  // debugger
   return { mytvdinners: state.tvdinner.mytvdinners }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  debugger
+  // debugger
   return {
     dispatchGetMyTVDinnersApi: () => dispatch(getMyTVDinnersApi())
   };

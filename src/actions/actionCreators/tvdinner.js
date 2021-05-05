@@ -17,7 +17,7 @@ export function addRecipe(recipeID) {
   }
 }
 export function getMyTVDinners(mytvdinners) {
-  debugger
+  // debugger
   return {
     type: GET_MY_TVDINNERS,
     payload: mytvdinners
@@ -25,7 +25,7 @@ export function getMyTVDinners(mytvdinners) {
 }
 
 export function getMyTVDinnersApi() {
-  debugger
+  // debugger
   return (dispatch) => {
     return fetch('http://localhost:3001/api/v1/mytvdinners', {
       method: "GET",
