@@ -1,4 +1,4 @@
-import { ADD_FILM, ADD_RECIPE, GET_MY_TVDINNERS} from '..';
+import { ADD_FILM, ADD_RECIPE, GET_TVDINNERS, GET_MY_TVDINNERS} from '../index';
 
 export function addFilm(filmID) {
   return {
@@ -24,6 +24,31 @@ export function getMyTVDinners(mytvdinners) {
   }
 }
 
+export function getTVDinners(tvdinners) {
+  return {
+    type: GET_TVDINNERS,
+    payload: tvdinners
+  }
+}
+
+export function getTVDinnersApi() {
+  return (dispatch) => {
+    return fetch('http://localhost:3001/api/v1/tvdinners', {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token")
+      }
+    })
+      .then(tvdinners => tvdinners.json())
+      .then(tvdinnersjson => {
+        dispatch(getTVDinners(tvdinnersjson))
+      }
+    )
+  }
+}
+
 export function getMyTVDinnersApi() {
   // debugger
   return (dispatch) => {
@@ -38,6 +63,7 @@ export function getMyTVDinnersApi() {
       .then(tvdinners => tvdinners.json())
       .then(mytvdinnersjson => {
         dispatch(getMyTVDinners(mytvdinnersjson))
-      })
+      }
+    )
   }
 }

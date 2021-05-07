@@ -3,11 +3,6 @@ import { connect } from 'react-redux'
 import { getMyTVDinnersApi } from '../actions/actionCreators/tvdinner.js'
 
 class MyTvdinnerList extends Component {
-  constructor(props){
-    super(props)
-    console.log(props,'this is my props')
-  }
-
   state = {
     mytvdinners: []
   }
@@ -20,7 +15,6 @@ class MyTvdinnerList extends Component {
 
 
   renderMyTvdinners = () => {
-    debugger
     return this.props.mytvdinners.map(tvdinner => {
       return (
         <div key={tvdinner.id}>

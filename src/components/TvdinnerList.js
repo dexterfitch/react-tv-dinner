@@ -1,23 +1,18 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { getTVDinnersApi } from '../actions/actionCreators/tvdinner.js'
 
 class TvdinnerList extends Component {
-
   state = {
     tvdinners: []
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/api/v1/tvdinners')
-      .then(tvdinners => tvdinners.json())
-      .then(json => {
-        this.setState({
-          tvdinners: json
-        })
-      })
+    this.props.dispatchGetTVDinnersApi()
   }
 
   renderTvdinners = () => {
-    return this.state.tvdinners.map(tvdinner => {
+    return this.props.tvdinners.map(tvdinner => {
       return (
         <div key={tvdinner.id}>
           <p><b>Name:</b> {tvdinner.name}</p>
@@ -40,4 +35,14 @@ class TvdinnerList extends Component {
   }
 }
 
-export default TvdinnerList
+const mapStateToProps = state => {
+  return { tvdinners: state.tvdinner.tvdinners }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dispatchGetTVDinnersApi: () => dispatch(getTVDinnersApi())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TvdinnerList);
