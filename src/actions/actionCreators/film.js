@@ -1,4 +1,13 @@
-import { SEARCH_FILM_API } from '..';
+import { ADD_FILM, SEARCH_FILM_API } from '..';
+
+export function addFilm(filmID) {
+  return {
+    type: ADD_FILM,
+    payload: {
+      filmID: filmID
+    }
+  }
+}
 
 export function searchFilms(films) {
   return {
@@ -16,4 +25,10 @@ export function searchFilmApi(searchString) {
         dispatch(searchFilms(filteredFilms));
       })
   }    
+}
+
+export function addFilmID(filmID) {
+  return (dispatch) => {
+    dispatch(addFilm(filmID))
+  }
 }

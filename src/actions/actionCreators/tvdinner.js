@@ -1,21 +1,12 @@
-import { ADD_FILM, ADD_RECIPE, GET_TVDINNERS, GET_MY_TVDINNERS} from '../index';
+import { GET_TVDINNERS, GET_MY_TVDINNERS, SAVE_TVDINNER, DELETE_TVDINNER } from '..';
 
-export function addFilm(filmID) {
+export function saveTVDinner(tvdinner) {
   return {
-    type: ADD_FILM,
-    payload: {
-      filmID: filmID
-    }
+    type: SAVE_TVDINNER,
+    payload: tvdinner
   }
 }
-export function addRecipe(recipeID) {
-  return {
-    type: ADD_RECIPE,
-    payload: {
-      recipeID: recipeID
-    }
-  }
-}
+
 export function getMyTVDinners(mytvdinners) {
   // debugger
   return {
@@ -28,6 +19,13 @@ export function getTVDinners(tvdinners) {
   return {
     type: GET_TVDINNERS,
     payload: tvdinners
+  }
+}
+
+export function deleteTVDinner(tvdinnerID) {
+  return {
+    type: DELETE_TVDINNER,
+    payload: tvdinnerID
   }
 }
 
@@ -65,5 +63,35 @@ export function getMyTVDinnersApi() {
         dispatch(getMyTVDinners(mytvdinnersjson))
       }
     )
+  }
+}
+
+export function saveTVDinnerApi(newTVDinner) {
+  return (dispatch) => {
+    return fetch('http://localhost:3001/api/v1/tvdinners', {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token")
+      },
+      body: JSON.stringify(newTVDinner)
+    })
+      .then(res => res.json())
+      .then(newTVDinner => {
+        dispatch(saveTVDinner(newTVDinner))
+      })
+  }
+}
+
+export function deleteTVDinnerApi(tvdinnerID) {
+  return (dispatch) => {
+    return fetch(`http://localhost:3001/api/v1/tvdinners/${tvdinnerID}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: localStorage.getItem("token")
+        }
+    })
+    .then(() => dispatch(deleteTVDinner(tvdinnerID)))
   }
 }

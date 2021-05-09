@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { searchFilmApi } from '../../actions/actionCreators/film.js'
+import { addFilmID, searchFilmApi } from '../../actions/actionCreators/film.js'
 import { ArrowRightIcon } from '@heroicons/react/solid';
 
 export class FilmSearch extends React.Component {
@@ -29,8 +29,8 @@ export class FilmSearch extends React.Component {
     }
   };
 
-  handleSelection = (film_id) => {
-    this.props.handleSetFilm(film_id);
+  handleSelection = e => {
+    this.props.addFilmID(e.target.id);
   }
 
   render() {
@@ -42,7 +42,7 @@ export class FilmSearch extends React.Component {
               name="filmsearch" 
               type="text" 
               placeholder="Search Films" 
-              onChange={e => this.handleChange(e)} 
+              onChange={this.handleChange} 
               onKeyPress={this.handleEnter} 
               value={this.state.searchString}
               className="p-3 placeholder-indigo-500 text-indigo-800 relative bg-white rounded border border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-300 focus:outline-none w-full"
@@ -83,7 +83,7 @@ export class FilmSearch extends React.Component {
                     )}
                     <button  
                       id={film.id}
-                      onClick={this.handleSelection(film.id)}
+                      onClick={this.handleSelection}
                       className="bg-indigo-500 text-white hover:bg-indigo-600 active:bg-indigo-300 focus:ring-1 focus:ring-indigo-900 focus:outline-none p-2 border border-indigo-600 rounded mt-5"
                     >
                       {film.media_type === "movie" ? (
@@ -106,6 +106,6 @@ export class FilmSearch extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({ searchedFilms: state.searchedFilms });
+const mapStateToProps = state => ({ searchedFilms: state.searchedFilms, filmID: state.filmID });
 
-export default connect(mapStateToProps, { searchFilmApi })(FilmSearch);
+export default connect(mapStateToProps, { addFilmID, searchFilmApi })(FilmSearch);

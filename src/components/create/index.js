@@ -1,7 +1,7 @@
 import React from 'react';
 import FilmSearch from './FilmSearch';
 import RecipeSearch from './RecipeSearch';
-// import Form from './Form';
+import TVDinnerForm from './Form';
 
 export default class Create extends React.Component {
 
@@ -36,7 +36,7 @@ export default class Create extends React.Component {
             <RecipeSearch handleAddRecipe={this.handleAddRecipe} />
           </div>
         </div>
-        {/* <Form /> */}
+        <TVDinnerForm />
       </div>
     );
   }

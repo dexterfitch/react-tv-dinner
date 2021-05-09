@@ -16,3 +16,7 @@ h2 {
   overflow: scroll;
   overflow-x: hidden;
 }
+
+button span {
+  pointer-events: none;
+}

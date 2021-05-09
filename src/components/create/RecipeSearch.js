@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { searchRecipeApi } from '../../actions/actionCreators/recipe.js';
-import { addRecipe } from '../../actions/actionCreators/tvdinner.js';
+import { addRecipe, searchRecipeApi } from '../../actions/actionCreators/recipe.js';
 import { ArrowRightIcon } from '@heroicons/react/solid';
 
 export class RecipeSearch extends React.Component {
@@ -31,7 +30,7 @@ export class RecipeSearch extends React.Component {
   };
 
   handleSelection = e => {
-    this.props.handleAddRecipe(e.target.id);
+    this.props.addRecipe(e.target.id);
   }
 
   render() {

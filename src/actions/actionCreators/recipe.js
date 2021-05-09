@@ -1,4 +1,13 @@
-import { SEARCH_RECIPE_API } from '..';
+import { ADD_RECIPE, SEARCH_RECIPE_API } from '..';
+
+export function addRecipe(recipeID) {
+  return {
+    type: ADD_RECIPE,
+    payload: {
+      recipeID: recipeID
+    }
+  }
+}
 
 export function searchRecipes(recipes) {
   return {
@@ -15,4 +24,10 @@ export function searchRecipeApi(searchString) {
         dispatch(searchRecipes(json.hits));
       })
   }    
+}
+
+export function addRecipeID(recipeID) {
+  return (dispatch) => {
+    dispatch(addRecipe(recipeID))
+  }
 }
