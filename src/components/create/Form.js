@@ -7,10 +7,7 @@ class TVDinnerForm extends React.Component {
   state = {
     tvdinner: {
       name: "",
-      description: "",
-      /* film_id: this.props.film_id,
-      recipe_ids: this.props.recipe_ids,
-      user_id: this.props.user_id */
+      description: ""
     }
   }
 
@@ -31,25 +28,42 @@ class TVDinnerForm extends React.Component {
     tvdinner.film_id = film_id;
     tvdinner.user_id = user_id;
     tvdinner.recipe_ids = recipe_ids;
-    this.props.saveTVDinnerApi(tvdinner)
-    this.props.history.push('/')
+    this.props.saveTVDinnerApi(tvdinner);
+    this.props.history.push('/');
+    window.location.reload();
   }
 
   render() {
-
-    console.log("this.props: ", this.props);
-    
-
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form 
+        onSubmit={this.handleSubmit}
+        className="mt-5"
+      >
         <label>Name:</label>
-        <input name="name" type="text" value={this.state.tvdinner.name} onChange={this.handleChange}/>
+        <input 
+          name="name" 
+          type="text" 
+          value={this.state.tvdinner.name} 
+          onChange={this.handleChange}
+          className="p-3 placeholder-indigo-500 text-indigo-800 relative bg-white rounded border border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-300 focus:outline-none w-full"
+        />
         <br/><br/>
         <label>Description:</label>
         <br/>
-        <textarea name="description" type="textarea" value={this.state.tvdinner.description} onChange={this.handleChange}/>
+        <textarea 
+          name="description" 
+          type="textarea" 
+          value={this.state.tvdinner.description} 
+          onChange={this.handleChange}
+          className="p-3 placeholder-indigo-500 text-indigo-800 relative bg-white rounded border border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-300 focus:outline-none w-full"
+        />
         <br/><br/>
-        <button type="submit">Save</button>
+        <button 
+          type="submit"
+          className="bg-indigo-500 text-white hover:bg-indigo-600 active:bg-indigo-300 focus:outline-none py-3 border border-indigo-600 rounded w-full"
+        >
+          Save
+        </button>
     </form>
     )
   }

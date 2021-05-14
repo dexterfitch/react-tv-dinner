@@ -1,4 +1,4 @@
-import { GET_TVDINNERS, GET_MY_TVDINNERS, SAVE_TVDINNER, DELETE_TVDINNER } from '..';
+import { GET_TVDINNERS, GET_MY_TVDINNERS, SAVE_TVDINNER } from '..';
 
 export function saveTVDinner(tvdinner) {
   return {
@@ -19,13 +19,6 @@ export function getTVDinners(tvdinners) {
   return {
     type: GET_TVDINNERS,
     payload: tvdinners
-  }
-}
-
-export function deleteTVDinner(tvdinnerID) {
-  return {
-    type: DELETE_TVDINNER,
-    payload: tvdinnerID
   }
 }
 
@@ -81,17 +74,5 @@ export function saveTVDinnerApi(newTVDinner) {
       .then(newTVDinner => {
         dispatch(saveTVDinner(newTVDinner))
       })
-  }
-}
-
-export function deleteTVDinnerApi(tvdinnerID) {
-  return (dispatch) => {
-    return fetch(`http://localhost:3001/api/v1/tvdinners/${tvdinnerID}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: localStorage.getItem("token")
-        }
-    })
-    .then(() => dispatch(deleteTVDinner(tvdinnerID)))
   }
 }
