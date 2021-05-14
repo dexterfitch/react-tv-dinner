@@ -29,8 +29,6 @@ class TVDinnerForm extends React.Component {
     tvdinner.user_id = user_id;
     tvdinner.recipe_ids = recipe_ids;
     this.props.saveTVDinnerApi(tvdinner);
-    this.props.history.push('/');
-    window.location.reload();
   }
 
   render() {

@@ -74,5 +74,8 @@ export function saveTVDinnerApi(newTVDinner) {
       .then(newTVDinner => {
         dispatch(saveTVDinner(newTVDinner))
       })
+      .then(() => {
+        window.location.reload();
+      })
   }
 }
