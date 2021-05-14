@@ -21,7 +21,12 @@ class MyTvdinnerList extends Component {
           <p><b>Name:</b> {tvdinner.name}</p>
           <p><b>Description:</b> {tvdinner.description}</p>
           <p><b>Film ID:</b> {tvdinner.film_id}</p>
-          <p><b>Recipe IDs:</b> {tvdinner.recipe_ids}</p>
+          <p><b>Recipe IDs:</b></p>
+          <ul>
+            {tvdinner.recipe_ids.map((recipe, key) => {
+              return <li className="pl-6"  key={key}>{recipe}</li>
+            })}
+          </ul>
           <hr className="border-solid border-4 border-indigo-700 my-4" />
         </div>
       )
